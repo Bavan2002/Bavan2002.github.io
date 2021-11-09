@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body{
+            background:url("universe.jpg");
+            background-repeat:no-repeat;
+            background-attachment: fixed;
+            background-size:cover;
+            color:black;
+            font-family: 'Montserrat', sans-serif;
+            
+        }
+        #titl{
+            background-color:white;
+            opacity:0.7;
+            text-align:center;
+            width:55vw;
+            position:relative;
+            left:22vw;
+        }
+        p{
+            font-family:arial;
+            font-size:20px;
+            position:relative;
+            top:-20px;
+        }
+        h1{
+            font-size:40px;
+        }
+        #form{
+            background-color:black;
+            opacity:0.8;
+            text-align:center;
+            width:55vw;
+            position:relative;
+            left:22vw;
+            top:-20px;
+
+        }
+        #survey-form{
+            text-align:left;
+            font-family:monospace;
+            font-size:25px;
+            margin:15px;
+            color:white;
+        }
+        .text{
+            width:100%;
+            height:35px;
+            box-sizing: border-box;
+            font-size:20px;
+            border-radius:5px;
+            background-color:white;
+            margin:10px 0px 10px 0px;
+            resize:vertical;
+        }
+        #Definetly,#Maybe,#NotSure{
+            transform:scale(1.5);
+            resize:vertical;
+        }
+        textarea{
+            width:100%;
+            height:100px;
+            resize:vertical;
+            padding:10px;
+            box-sizing:border-box;
+            border:4px solid;
+            border-radius:5px;
+
+        }
+        input[type="submit"]{
+            width:100%;
+            height:50px;
+            position:relative;
+            top:20px;
+            font-size:30px;
+            background-color:lime;
+            cursor:pointer;
+            border-radius:5px;
+        }
+        
+        @media screen and (max-width:600px){
+            #titl,#form,input[type="submit"]{
+                width:96vw;
+                position:relative;
+                left:0px;
+            }
+            
+        }
+          
+        
+    </style>
+</head>
+<body>
+  
+    <div id="titl">
+        <h1 id="title">Bavan's Survey Form</h1>
+        <p id="description"> Tell Us About You </p>
+    </div>
+    <div id="form"> 
+        <form id="survey-form">
+            <label class="label" for="name" id="name-label">Name</label><br>
+            <input class="text" type="text" id="name" name="name" placeholder="Enter Your Name" required>
+            <label class="label" for="email" id="email-label">Email</label><br>
+            <input class="text" type="emial" id="email" name="email" placeholder="Enter Your Eamil" required>
+            <label class="label" for="age" id="age-label">Age(optional)</label><br>
+            <input class="text" type="number" id="age" name="age" placeholder="Enter Your Age" min="18" max="99">
+            <label class="label" for="dropdown">Which option best describes your current role?</label>
+            <input class="text" id="dropdown" name="drop-down" list="jobs" placeholder="Select Current Role" required >
+            <datalist id="jobs">
+                <option value="Student">
+                <option value="Full Time Job">
+                <option value="Full Time Learner">
+                <option value="Prefer Not To Say">
+                <option value="Other">
+            </datalist>
+            <label for="cosmology" style="margin-bottom:20px;">Would you like to study Cosmology?</label>
+            <br>
+            <input type="radio" id="Definetly" name="Cosmology" value="Definetly">
+            <label for="Definetly">Definetly</label>
+            <br>
+            <input type="radio" id="Maybe" name="Cosmology" value="Maybe">
+            <label for="Maybe">Maybe</label>
+            <br>
+            <input type="radio" id="NotSure" name="Cosmology" value="NotSure">
+            <label for="NotSure">Not Sure</label>
+            <br>
+            <label style="position:relative; top:15px;" >Any Comments Or Suggestion?</label>
+            <br>
+            <textarea placeholder="Write Something..." style="position:relative; top:15px;"  name="comments" id="comments">
+                
+            </textarea>
+            <input type="submit" name="Submit" value="Submit">
+
+
+
+        </form>
+
+    </div>
+
+</body>
+</html>
