@@ -1,51 +1,43 @@
-// Create a client instance
-var client = new Paho.MQTT.Client("https://2bit-iwud01ltywxm.cedalo.dev", Number(1883), "1234");
+// Define MQTT broker connection parameters
+var broker = {
+	hostname: "mqtt.eclipse.org",
+	port: 443,
+	path: "/mqtt",
+	username: "",
+	password: "",
+	useSSL: true
+};
 
-// Set callback handlers
+// Create a client instance
+var client = new Paho.MQTT.Client(broker.hostname, broker.port, broker.path);
+
+// Set callback handlers for MQTT client
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 
-// Connect the client
+// Connect to MQTT broker
 client.connect({
-    onSuccess: onConnect,
-    userName: "web",
-    password: "1234",
-    useSSL: true
+	onSuccess: onConnect,
+	userName: broker.username,
+	password: broker.password,
+	useSSL: broker.useSSL
 });
 
-// Called when the client connects
+// Called when the client connects to MQTT broker
 function onConnect() {
-    console.log("Connected to MQTT broker");
-    // Subscribe to the topic
-    client.subscribe("TT");
+	console.log("Connected to MQTT broker");
+	client.subscribe("test/topic");
 }
 
-// Called when the client loses its connection
+// Called when the client loses connection to MQTT broker
 function onConnectionLost(responseObject) {
-    if (responseObject.errorCode !== 0) {
-        console.log("Connection lost: " + responseObject.errorMessage);
-    }
+	if (responseObject.errorCode !== 0) {
+		console.log("Connection lost: " + responseObject.errorMessage);
+	}
 }
 
-// Called when a message arrives
+// Called when a message arrives on the subscribed topic
 function onMessageArrived(message) {
-    console.log("Message received: " + message.payloadString);
-    // Display the message on the web page
-    document.getElementById("message").innerHTML = message.payloadString;
+	console.log("Message received: " + message.payloadString);
+	document.getElementById("message").innerHTML = message.payloadString;
 }
-
-// Called when the ON button is clicked
-document.getElementById("on").addEventListener("click", function() {
-    // Publish a message to the topic
-    var message = new Paho.MQTT.Message("ON");
-    message.destinationName = "TT";
-    client.send(message);
-});
-
-// Called when the OFF button is clicked
-document.getElementById("off").addEventListener("click", function() {
-    // Publish a message to the topic
-    var message = new Paho.MQTT.Message("OFF");
-    message.destinationName = "TT";
-    client.send(message);
-});
