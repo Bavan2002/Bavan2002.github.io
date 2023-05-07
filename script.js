@@ -4,7 +4,7 @@ var client = mqtt.connect("wss://2bit-iwud01ltywxm.cedalo.dev:443", {
 	password: "1234"
 });
 
-// Subscribe to the topic
+// Subscribe to the topic g
 client.subscribe("TT");
 
 // Handle incoming messages
