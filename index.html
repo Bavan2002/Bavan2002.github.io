@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MQTT Subscriber</title>
-	<link rel="stylesheet" href="style.css">
+	<title>MQTT Web App</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="container">
-		<h1>MQTT Subscriber</h1>
-		<p>Topic: <span id="topic"></span></p>
-		<p>Message: <span id="message"></span></p>
+	<h1>MQTT Web App</h1>
+	<div id="status"></div>
+	<div id="message"></div>
+	<div id="buttons">
+		<button id="on">ON</button>
+		<button id="off">OFF</button>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>
-
