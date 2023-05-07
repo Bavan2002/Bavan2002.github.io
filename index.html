@@ -1,52 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #img-div{
-            text-align:center;
-        }
-        #image{
-            max-width:1000px;
-            height:500px;
-            box-shadow:0px 20px 20px rgba(0,0,0,0.3),0px 15px 15px rgba(0,0,0,0.2);
-        }
-        #img-caption{
-            text-align:center;
-        }
-        h1{
-            text-align:center;
-            background-color:aqua;
-            padding:10px;
-        }
-        p{
-            font-family:monospace;
-            font-size:20px;
-        }
-        h2{
-            background-color:pink;
-            padding:10px;
-        }
-    </style>
+	<title>MQTT Data Display</title>
 </head>
 <body>
-    <main id="main">
-    <h1 id="title">Chadwick Boseman</h1>
-    <div id="img-div">
-    <img src="Chadwick.jpg" alt="Chadwick_Boseman" id="image">
-    <p id="img-caption">Chadwick Boseman</p>
-    </div>
-    <div id="tribute-info">
-        <h2>About Chadwick Boseman</h2>
-        <p>
-            Chadwick Aaron Boseman (/ˈboʊzmən/;[5] November 29, 1976[a] – August 28, 2020) was an American actor and playwright. After studying directing at Howard University, he began working consistently as a writer, director, and actor for the stage, winning a Drama League Directing Fellowship and an acting AUDELCO, and being nominated for a Jeff Award as a playwright for Deep Azure. Transitioning to the screen, he landed his first major role as a series regular on Persons Unknown in 2010, and his breakthrough performance came in 2013 as baseball player Jackie Robinson in the biographical film 42. He continued to portray historical figures, starring as singer James Brown in Get on Up (2014), and as lawyer and future Supreme Court Justice Thurgood Marshall in Marshall (2017).
-            <a href="https://en.wikipedia.org/wiki/Chadwick_Boseman" target="_blank">For more information</a>
-            <a href="project2.html">Project2</a>
-        </p>
-    </div>
-    </main>
+	<div id="mqttData"></div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+	<script src="mqtt.js"></script>
 </body>
 </html>
