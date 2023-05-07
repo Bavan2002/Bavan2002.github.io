@@ -1,5 +1,5 @@
 var mqttBroker = '2bit-iwud01ltywxm.cedalo.dev';
-var mqttPort = 8883;
+var mqttPort = 1883;
 var mqttTopic = 'TT';
 
 var client = new Paho.MQTT.Client(mqttBroker, mqttPort, 'mqtt-webclient');
