@@ -1,27 +1,13 @@
-h1 {
-	text-align: center;
-	margin-top: 20px;
-}
-
-#status {
-	text-align: center;
-	font-size: 24px;
-	margin-top: 20px;
+body {
+	background-color: #f0f0f0;
 }
 
 #message {
+	width: 50%;
+	margin: 10% auto;
+	background-color: #fff;
+	padding: 20px;
 	text-align: center;
 	font-size: 24px;
-	margin-top: 20px;
-}
-
-#buttons {
-	display: flex;
-	justify-content: center;
-	margin-top: 20px;
-}
-
-button {
-	font-size: 24px;
-	margin-right: 10px;
+	border: 2px solid #ccc;
 }
