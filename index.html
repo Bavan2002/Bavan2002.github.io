@@ -1,18 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
 	<title>MQTT Subscriber</title>
-	<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="script.js"></script>
-	<link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js"></script>
+
+
+	<script>
+		// Connect to the Cedalo MQTT broker using a secure WebSocket connection (wss)
+		var client = new Paho.MQTT.Client("2bit-iwud01ltywxm.cedalo.dev", Number(443), "ESP32-client");
+
+		// Set credentials
+		client.username = "2bit";
+		client.password = "1234";
+
+		// Set callback handlers
+		client.onConnectionLost = onConnectionLost;
+		client.onMessageArrived = onMessageArrived;
+
+		// Connect the client
+		client.connect({
+			onSuccess: onConnect,
+			onFailure: onFailure,
+			useSSL: true,
+			timeout: 3,
+		});
+
+		// Callback function executed when the client connects successfully
+		function onConnect() {
+			// Subscribe to the topic
+			client.subscribe("TT");
+
+			// Update the status label
+			document.getElementById("status").innerHTML = "Connected";
+		}
+
+		// Callback function executed when the client fails to connect
+		function onFailure(err) {
+			// Update the status label
+			document.getElementById("status").innerHTML = "Failed to connect: " + err.errorMessage;
+		}
+
+		// Callback function executed when the client loses its connection
+		function onConnectionLost(responseObject) {
+			if (responseObject.errorCode !== 0) {
+				// Update the status label
+				document.getElementById("status").innerHTML = "Connection lost: " + responseObject.errorMessage;
+			}
+		}
+
+		// Callback function executed when a message is received
+		function onMessageArrived(message) {
+			// Update the topic label
+			document.getElementById("topic").innerHTML = message.destinationName;
+
+			// Add the message to the list
+			var node = document.createElement("li");
+			node.appendChild(document.createTextNode(message.payloadString));
+			document.getElementById("messages").appendChild(node);
+		}
+	</script>
 </head>
 <body>
-	<div id="container">
-		<h1>MQTT Subscriber</h1>
-		<p>Messages received on topic: <span id="topic"></span></p>
-		<ul id="messages"></ul>
-	</div>
+	<h1>MQTT Subscriber</h1>
+	<p>Status: <span id="status">Connecting...</span></p>
+	<p>Topic: <span id="topic">-</span></p>
+	<ul id="messages"></ul>
 </body>
 </html>
